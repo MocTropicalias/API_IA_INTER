@@ -26,9 +26,9 @@ def process_json():
             return jsonify({"error": f"Campo obrigatório ausente: {key}"}), 400
 
 
-    caminho_arq_tratamento = os.path.dirname(__file__)+"\\pkls\\tratamento_dados.pkl"
+    caminho_arq_tratamento = os.path.dirname(__file__)+"/pkls/tratamento_dados.pkl"
 
-    caminho_arq_modelo = os.path.dirname(__file__)+"\\pkls\\modelo.pkl"
+    caminho_arq_modelo = os.path.dirname(__file__)+"/pkls/modelo.pkl"
 
     with open(caminho_arq_tratamento, 'rb') as f:
         tratamento_dados = pickle.load(f)
