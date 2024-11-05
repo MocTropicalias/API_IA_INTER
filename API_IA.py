@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import pickle
 import pandas as pd
 import os
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import psycopg as pg
 
 banco = "postgres://avnadmin:AVNS_69W0O2_65jEqbsCuztW@pg-11d01e0e-testepgsql.e.aivencloud.com:24931/dbBaseIA?sslmode=require"
@@ -10,6 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/process', methods=['POST'])
+@cross_origin()
 def process_json():
     # Receber o JSON enviado na requisição
     data = request.get_json()
