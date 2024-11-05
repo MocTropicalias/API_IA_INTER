@@ -29,7 +29,7 @@ def process_json():
         if key not in data:
             return jsonify({"error": f"Campo obrigatório ausente: {key}"}), 400
         
-    query = "insert into tb_base(var_genero, int_idade, var_renda, var_estado, var_eletronicos, var_educacao, var_esportes, var_locais_publicos, var_result) values('"+data["Qual é seu genero?"]+"',"+str(data["Qual é a sua idade?"])+",'"+data["Qual é a média da sua renda familiar mensal?"]+"','"+data["Qual estado você mora?"]+"','"+data["Você usa muitos eletrônicos durante o dia? (6h ou mais)"]+"','"+data["Qual grau de educação você tem?"]+"','"+data["Você pratica esportes? (pelo menos 3 vezes na semana)"]+"','"+data["Você frequenta muito espaços públicos? (parques',' museus e etc)"]+"','"
+    query = "insert into tb_base(var_genero, int_idade, var_renda, var_estado, var_eletronicos, var_educacao, var_esportes, var_locais_publicos, var_result) values('"+data["Qual é seu genero?"]+"',"+str(data["Qual é a sua idade?"])+",'"+data["Qual é a média da sua renda familiar mensal?"]+"','"+data["Qual estado você mora?"]+"','"+data["Você usa muitos eletrônicos durante o dia? (6h ou mais)"]+"','"+data["Qual grau de educação você tem?"]+"','"+data["Você pratica esportes? (pelo menos 3 vezes na semana)"]+"','"+data["Você frequenta muito espaços públicos? (parques, museus e etc)"]+"','"
 
     caminho_arq_tratamento = os.path.dirname(__file__)+"/pkls/tratamento_dados.pkl"
 
