@@ -3,3 +3,4 @@ flask
 scikit-learn
 flask-cors
 psycopg[binary]
+python-dotenv
