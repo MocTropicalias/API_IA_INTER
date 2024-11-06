@@ -23,14 +23,14 @@ def process_json():
 
     # Validar se o JSON está no formato esperado
     required_keys = [
-        "Qual é seu genero?",
-        "Qual é a sua idade?",
-        "Qual é a média da sua renda familiar mensal?",
-        "Qual estado você mora?",
-        "Você usa muitos eletrônicos durante o dia? (6h ou mais)",
-        "Qual grau de educação você tem?",
-        "Você pratica esportes? (pelo menos 3 vezes na semana)",
-        "Você frequenta muito espaços públicos? (parques, museus e etc)"
+        "genero",
+        "idade",
+        "renda",
+        "estado",
+        "eletronicos",
+        "educacao",
+        "esportes",
+        "locais_publicos"
     ]
     for key in required_keys:
         if key not in data:
@@ -53,21 +53,32 @@ def process_json():
     with open(caminho_arq_modelo, 'rb') as f:
         modelo = pickle.load(f)
     
+    #declarando colunas
+    cols = [
+        "Qual é seu genero?",
+        "Qual é a sua idade?",
+        "Qual é a média da sua renda familiar mensal?",
+        "Qual estado você mora?",
+        "Você usa muitos eletrônicos durante o dia? (6h ou mais)",
+        "Qual grau de educação você tem?",
+        "Você pratica esportes? (pelo menos 3 vezes na semana)",
+        "Você frequenta muito espaços públicos? (parques, museus e etc)"
+    ]
     # Preparar os dados para o modelo
-    dados = pd.DataFrame([data], columns=required_keys)
+    dados = pd.DataFrame([data], columns=cols)
     x = pd.DataFrame(tratamento_dados.transform(dados), columns=tratamento_dados.get_feature_names_out())
     previsao = modelo.predict(x)[0]
     
     # Adicionar a previsão à consulta SQL
     valores = (
-        data["Qual é seu genero?"],
-        int(data["Qual é a sua idade?"]),
-        data["Qual é a média da sua renda familiar mensal?"],
-        data["Qual estado você mora?"],
-        data["Você usa muitos eletrônicos durante o dia? (6h ou mais)"],
-        data["Qual grau de educação você tem?"],
-        data["Você pratica esportes? (pelo menos 3 vezes na semana)"],
-        data["Você frequenta muito espaços públicos? (parques, museus e etc)"],
+        data["genero"],
+        int(data["idade"]),
+        data["renda"],
+        data["estado"],
+        data["eletronicos"],
+        data["educacao"],
+        data["esportes"],
+        data["locais_publicos"],
         previsao
     )
 
