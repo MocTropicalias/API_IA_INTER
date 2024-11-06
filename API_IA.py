@@ -65,7 +65,10 @@ def process_json():
         "Você frequenta muito espaços públicos? (parques, museus e etc)"
     ]
     # Preparar os dados para o modelo
-    dados = pd.DataFrame([data], columns=cols)
+    lista = []
+    for i in required_keys:
+        lista.append(data[i]) 
+    dados = pd.DataFrame(lista, columns=cols)
     x = pd.DataFrame(tratamento_dados.transform(dados), columns=tratamento_dados.get_feature_names_out())
     previsao = modelo.predict(x)[0]
     
