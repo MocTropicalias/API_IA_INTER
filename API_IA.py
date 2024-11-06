@@ -4,8 +4,12 @@ import pandas as pd
 import os
 from flask_cors import CORS, cross_origin
 import psycopg as pg
+from dotenv import load_dotenv
+import os
 
-banco = "postgres://avnadmin:AVNS_69W0O2_65jEqbsCuztW@pg-11d01e0e-testepgsql.e.aivencloud.com:24931/dbBaseIA?sslmode=require"
+
+load_dotenv()
+banco = os.getenv("banco")
 app = Flask(__name__)
 CORS(app)
 
