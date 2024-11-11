@@ -76,12 +76,12 @@ def process_json():
     valores = (
         data["genero"],
         int(data["idade"]),
-        data["renda"].replace(to_replace="_", value=" "),
-        data["estado"].replace(to_replace="_", value=" "),
-        data["eletronicos"].replace(to_replace="_", value=" "),
-        data["educacao"].replace(to_replace="_", value=" "),
-        data["esportes"].replace(to_replace="_", value=" "),
-        data["locais_publicos"].replace(to_replace="_", value=" "),
+        data["renda"].replace("_", " "),
+        data["estado"].replace("_", " "),
+        data["eletronicos"].replace("_", " "),
+        data["educacao"].replace("_", " "),
+        data["esportes"].replace("_", " "),
+        data["locais_publicos"].replace("_", " "),
         previsao
     )
 
