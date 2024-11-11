@@ -83,12 +83,12 @@ def process_json():
     valores = (
         data["genero"],
         int(data["idade"]),
-        data["renda"]
-        data["estado"]
-        data["eletronicos"]
-        data["educacao"]
-        data["esportes"]
-        data["locais_publicos"]
+        data["renda"],
+        data["estado"],
+        data["eletronicos"],
+        data["educacao"],
+        data["esportes"],
+        data["locais_publicos"],
         previsao
     )
 
