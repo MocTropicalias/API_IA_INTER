@@ -68,7 +68,7 @@ def process_json():
     lista = []
     for i in required_keys:
         lista.append(data[i]) 
-    dados = pd.DataFrame([lista], columns=cols)
+    dados = pd.DataFrame([lista], columns=cols).replace(to_replace="_", value=" ")
     x = pd.DataFrame(tratamento_dados.transform(dados), columns=tratamento_dados.get_feature_names_out())
     previsao = modelo.predict(x)[0]
     
@@ -76,12 +76,12 @@ def process_json():
     valores = (
         data["genero"],
         int(data["idade"]),
-        data["renda"],
-        data["estado"],
-        data["eletronicos"],
-        data["educacao"],
-        data["esportes"],
-        data["locais_publicos"],
+        data["renda"].replace(to_replace="_", value=" "),
+        data["estado"].replace(to_replace="_", value=" "),
+        data["eletronicos"].replace(to_replace="_", value=" "),
+        data["educacao"].replace(to_replace="_", value=" "),
+        data["esportes"].replace(to_replace="_", value=" "),
+        data["locais_publicos"].replace(to_replace="_", value=" "),
         previsao
     )
 
