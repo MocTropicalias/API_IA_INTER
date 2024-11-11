@@ -65,10 +65,17 @@ def process_json():
         "Você frequenta muito espaços públicos? (parques, museus e etc)"
     ]
     # Preparar os dados para o modelo
+    data["renda"] = data["renda"].replace("_", " ")
+    data["estado"] = data["estado"].replace("_", " ")
+    data["eletronicos"] = data["eletronicos"].replace("_", " ")
+    data["educacao"] = data["educacao"].replace("_", " ")
+    data["esportes"] = data["esportes"].replace("_", " ")
+    data["locais_publicos"] = data["locais_publicos"].replace("_", " ")
+
     lista = []
     for i in required_keys:
         lista.append(data[i]) 
-    dados = pd.DataFrame([lista], columns=cols).replace(to_replace="_", value=" ")
+    dados = pd.DataFrame([lista], columns=cols)
     x = pd.DataFrame(tratamento_dados.transform(dados), columns=tratamento_dados.get_feature_names_out())
     previsao = modelo.predict(x)[0]
     
@@ -76,12 +83,12 @@ def process_json():
     valores = (
         data["genero"],
         int(data["idade"]),
-        data["renda"].replace("_", " "),
-        data["estado"].replace("_", " "),
-        data["eletronicos"].replace("_", " "),
-        data["educacao"].replace("_", " "),
-        data["esportes"].replace("_", " "),
-        data["locais_publicos"].replace("_", " "),
+        data["renda"],
+        data["estado"],
+        data["eletronicos"],
+        data["educacao"],
+        data["esportes"],
+        data["locais_publicos"],
         previsao
     )
 
